@@ -60,14 +60,20 @@ namespace DCIT318Assignment2
             Cat cat = new Cat(catName);
 
             Console.WriteLine("\nDemonstrating polymorphism with MakeSound() method:");
-            Console.WriteLine("Dog instance:");
+            // Console.WriteLine("Dog instance:");
             dog.MakeSound();
 
-            Console.WriteLine("\nCat instance:");
+
             cat.MakeSound();
 
-            Console.WriteLine("\nPress any key to return to menu...");
-            Console.ReadKey();
+            Console.WriteLine("\nDo you want to try another example? (Y/N)");
+            Console.Write("Press Y to continue with Inheritance Demo or any other key to return to main menu: ");
+            string choice = Console.ReadLine();
+
+            if (choice?.ToUpper() == "Y")
+            {
+                InheritanceDemo();
+            }
         }
 
         static void AbstractClassDemo()
@@ -109,8 +115,14 @@ namespace DCIT318Assignment2
             Console.WriteLine($"Area: {rectangle.GetArea():F2}");
             Console.WriteLine($"Perimeter: {rectangle.GetPerimeter():F2}");
 
-            Console.WriteLine("\nPress any key to return to menu...");
-            Console.ReadKey();
+            Console.WriteLine("\nDo you want to try another example? (Y/N)");
+            Console.Write("Press Y to continue with Abstract Class Demo or any other key to return to main menu: ");
+            string choice = Console.ReadLine();
+
+            if (choice?.ToUpper() == "Y")
+            {
+                AbstractClassDemo();
+            }
         }
 
         static void InterfaceDemo()
@@ -137,9 +149,14 @@ namespace DCIT318Assignment2
             Console.WriteLine("\nBicycle instance:");
             bicycle.Move();
 
-            Console.WriteLine("\nPress any key to return to menu...");
-            Console.ReadKey();
+            Console.WriteLine("\nDo you want to try another example? (Y/N)");
+            Console.Write("Press Y to continue with Interface Demo or any other key to return to main menu: ");
+            string choice = Console.ReadLine();
+
+            if (choice?.ToUpper() == "Y")
+            {
+                InterfaceDemo();
+            }
         }
     }
 }
- 

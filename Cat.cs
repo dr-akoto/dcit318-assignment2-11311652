@@ -14,7 +14,7 @@ namespace DCIT318Assignment2
         // Override the MakeSound method
         public override void MakeSound()
         {
-            Console.WriteLine($"{Name} says: Meow!");
+            Console.WriteLine($"{Name} Meows!");
         }
     }
 }

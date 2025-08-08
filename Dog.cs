@@ -14,7 +14,7 @@ namespace DCIT318Assignment2
         // Override the MakeSound method (polymorphism)
         public override void MakeSound()
         {
-            Console.WriteLine($"{Name} says: Bark!");
+            Console.WriteLine($"{Name} Barks!");
         }
     }
 }
