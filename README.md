@@ -8,21 +8,24 @@
 - [Usage](#usage)
 - [Code Organization](#code-organization)
 - [OOP Concepts Demonstrated](#oop-concepts-demonstrated)
+- [Performance Optimizations](#performance-optimizations)
 - [Development](#development)
 - [Troubleshooting](#troubleshooting)
 - [Contributors](#contributors)
 
 ## Overview
-This project demonstrates fundamental Object-Oriented Programming (OOP) concepts through a menu-driven C# console application. It includes examples of inheritance, abstraction, polymorphism, encapsulation, and interfaces.
+This project demonstrates fundamental Object-Oriented Programming (OOP) concepts through a menu-driven C# console application. It includes examples of inheritance, abstraction, polymorphism, encapsulation, and interfaces, with performance optimizations for faster execution.
 
 ## Features
-- Interactive menu-based console application
+- Interactive menu-based console application with improved performance
 - Three demonstration modules:
   1. Inheritance Demo: Shows inheritance relationships between Animal base class and Dog/Cat derived classes
   2. Abstract Class Demo: Demonstrates abstraction with Shape abstract class and Circle/Rectangle concrete implementations
   3. Interface Demo: Showcases interface implementation with IMovable interface and Car/Bicycle classes
 - User input for customizing demonstrations
-- Easy launch scripts for running the application
+- Simple navigation between demos and main menu
+- Optimized console operations for faster execution
+- Quick-start batch files for easy program launch
 
 ## Project Structure
 ```
@@ -69,7 +72,36 @@ InheritanceDemo/
    ```
    dotnet build
    ```
+# DCIT318 Assignment 2: OOP Concepts Demo
 
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Code Organization](#code-organization)
+- [OOP Concepts Demonstrated](#oop-concepts-demonstrated)
+- [Performance Optimizations](#performance-optimizations)
+- [Development](#development)
+- [Troubleshooting](#troubleshooting)
+- [Contributors](#contributors)
+
+## Overview
+This project demonstrates fundamental Object-Oriented Programming (OOP) concepts through a menu-driven C# console application. It includes examples of inheritance, abstraction, polymorphism, encapsulation, and interfaces, with performance optimizations for faster execution.
+
+## Features
+- Interactive menu-based console application with improved performance
+- Three demonstration modules:
+  1. Inheritance Demo: Shows inheritance relationships between Animal base class and Dog/Cat derived classes
+  2. Abstract Class Demo: Demonstrates abstraction with Shape abstract class and Circle/Rectangle concrete implementations
+  3. Interface Demo: Showcases interface implementation with IMovable interface and Car/Bicycle classes
+- User input for customizing demonstrations
+- Simple navigation between demos and main menu
+- Optimized console operations for faster execution
+- Quick-start batch files for easy program launch
+
+## Project Structure
 ## Usage
 
 ### Running the Application
@@ -88,22 +120,26 @@ dotnet run --project InheritanceDemo.csproj
 ```
 
 ### Using the Application
-1. When the application starts, you'll see a menu with four options:
+1. When the application starts, you'll see a menu with options:
    ```
-   === DCIT318 Assignment 2: OOP Concepts Demo ===
-   1. Inheritance Demo (Animal, Dog, Cat)
-   2. Abstract Class Demo (Shape, Circle, Rectangle)
-   3. Interface Demo (IMovable, Car, Bicycle)
-   4. Exit
-
-   Enter your choice (1-4):
+   === Main Menu ===
+   Select an option:
+   1 - Animals Demo
+   2 - Shapes Demo
+   3 - Movable Objects (Bicycle & Car)
+   Type 'exit' to close the application.
+   >
    ```
 
-2. Enter your choice (1-4) to navigate to the corresponding demonstration.
+2. Enter your choice (1-3) or type 'exit' to close the application.
 
 3. Follow the prompts in each demonstration to see OOP concepts in action.
 
-4. After each demonstration, you'll be asked if you want to try another example or return to the main menu.
+4. After each demonstration, you'll be asked if you want to continue in this section.
+
+5. Navigation commands:
+   - Type 'exit' at any prompt to exit the program
+   - Type 'back', 'end', or 'n' at any prompt to return to the previous menu
 
 ## Code Organization
 
@@ -119,10 +155,14 @@ dotnet run --project InheritanceDemo.csproj
 
 ### Main Program
 The `Program.cs` file contains the main menu and the methods for each demonstration:
-- `Main`: Entry point with the menu loop
-- `InheritanceDemo`: Demonstrates inheritance concept
-- `AbstractClassDemo`: Demonstrates abstract classes
-- `InterfaceDemo`: Demonstrates interfaces
+- `Main`: Entry point with the optimized menu loop
+- `RunAnimalsDemo`: Demonstrates inheritance concept
+- `RunShapesDemo`: Demonstrates abstract classes
+- `RunMovableObjectsDemo`: Demonstrates interfaces
+- Helper methods:
+  - `DisplayMainMenu`: Shows the main menu options
+  - `CheckForNavigation`: Handles navigation commands
+  - `PromptToContinue`: Asks user if they want to continue in the current section
 
 ## OOP Concepts Demonstrated
 
@@ -189,6 +229,18 @@ Demonstrated through the IMovable interface with Car and Bicycle implementations
   public class Car : IMovable { ... }
   ```
 
+## Performance Optimizations
+
+The application has been optimized for better performance:
+
+1. **Reduced Console.Clear() calls**: Minimized screen refreshes to improve UI responsiveness
+2. **Efficient navigation**: Added a CheckForNavigation method to handle exit and back commands consistently
+3. **Improved input validation**: More efficient handling of user inputs with null-safe operations
+4. **Structured demo loops**: Each demo uses a while loop with a boolean flag instead of recursive calls
+5. **Optimized error handling**: More targeted exception handling
+6. **Streamlined console output**: Reduced unnecessary console operations
+7. **Null-safe string operations**: Added null conditional and null coalescing operators for robustness
+
 ## Development
 
 ### Adding New Features
@@ -209,16 +261,19 @@ The output will be in the `bin/Release/net6.0/publish` directory.
 ## Troubleshooting
 
 ### Common Issues
-1. **"Error MSB1011: Specify which project or solution file to use"**
+1. **"Program takes too long to load"**
+   - Solution: The latest optimizations should address this issue. Make sure you're using the latest version.
+
+2. **"Error MSB1011: Specify which project or solution file to use"**
    - Solution: Specify the project file explicitly
    ```
    dotnet run --project InheritanceDemo.csproj
    ```
 
-2. **"The system cannot find the file specified" when using 'start' command**
+3. **"The system cannot find the file specified" when using 'start' command**
    - Solution: Use the full path or use .\start.bat instead
 
-3. **Build errors related to missing references**
+4. **Build errors related to missing references**
    - Solution: Restore NuGet packages
    ```
    dotnet restore
@@ -229,4 +284,4 @@ The output will be in the `bin/Release/net6.0/publish` directory.
 - University of Ghana, Department of Computer Science
 
 ---
-© 2025 DCIT318 Assignment 2
+© 2025 DCIT318 Assignment 2 - All rights reserved
