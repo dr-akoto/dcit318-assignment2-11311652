@@ -1,5 +1,5 @@
-﻿using System;
-using DCIT318Assignment2;
+﻿
+using System;
 
 namespace DCIT318Assignment2
 {
@@ -7,155 +7,277 @@ namespace DCIT318Assignment2
     {
         static void Main(string[] args)
         {
-            bool exit = false;
+            // Display main menu and handle navigation
+            bool exitProgram = false;
 
-            while (!exit)
+            // Initial console setup - only set once
+            Console.Title = "OOP Concepts Demo";
+
+            while (!exitProgram)
             {
+                // Clear once at the main menu only
                 Console.Clear();
-                Console.WriteLine("=== DCIT318 Assignment 2: OOP Concepts Demo ===");
-                Console.WriteLine("1. Inheritance Demo (Animal, Dog, Cat)");
-                Console.WriteLine("2. Abstract Class Demo (Shape, Circle, Rectangle)");
-                Console.WriteLine("3. Interface Demo (IMovable, Car, Bicycle)");
-                Console.WriteLine("4. Exit");
-                Console.Write("\nEnter your choice (1-4): ");
+                DisplayMainMenu();
 
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine()?.Trim().ToLower() ?? "";
 
                 switch (choice)
                 {
                     case "1":
-                        InheritanceDemo();
+                        RunAnimalsDemo();
                         break;
                     case "2":
-                        AbstractClassDemo();
+                        RunShapesDemo();
                         break;
                     case "3":
-                        InterfaceDemo();
+                        RunMovableObjectsDemo();
                         break;
-                    case "4":
-                        exit = true;
+                    case "exit":
+                        exitProgram = true;
+                        Console.WriteLine("Exiting program. Goodbye!");
                         break;
                     default:
-                        Console.WriteLine("Invalid choice. Press any key to try again...");
+                        Console.WriteLine("Invalid option. Press any key to try again.");
                         Console.ReadKey();
                         break;
                 }
             }
         }
 
-        static void InheritanceDemo()
+        static void DisplayMainMenu()
         {
-            Console.Clear();
-            Console.WriteLine("=== Inheritance Demo ===");
-            Console.WriteLine("This demonstrates inheritance with Animal as base class and Dog/Cat as derived classes.\n");
+            // Use a single string for faster console output
+            Console.WriteLine("=== Main Menu ===\n" +
+                              "Select an option:\n" +
+                              "1 - Animals Demo\n" +
+                              "2 - Shapes Demo\n" +
+                              "3 - Movable Objects (Bicycle & Car)\n" +
+                              "Type 'exit' to close the application.");
+            Console.Write("> ");
+        }
 
-            Console.Write("Enter a name for a dog: ");
-            string dogName = Console.ReadLine();
+        static bool CheckForNavigation(string input)
+        {
+            // Fast return if input is null or empty
+            if (string.IsNullOrEmpty(input))
+                return false;
 
-            Console.Write("Enter a name for a cat: ");
-            string catName = Console.ReadLine();
+            // Convert to lowercase once
+            string lowerInput = input.ToLower();
 
-            // Create instances
-            Dog dog = new Dog(dogName);
-            Cat cat = new Cat(catName);
-
-            Console.WriteLine("\nDemonstrating polymorphism with MakeSound() method:");
-            // Console.WriteLine("Dog instance:");
-            dog.MakeSound();
-
-
-            cat.MakeSound();
-
-            Console.WriteLine("\nDo you want to try another example? (Y/N)");
-            Console.Write("Press Y to continue with Inheritance Demo or any other key to return to main menu: ");
-            string choice = Console.ReadLine();
-
-            if (choice?.ToUpper() == "Y")
+            if (lowerInput == "exit")
             {
-                InheritanceDemo();
+                Console.WriteLine("Exiting program. Goodbye!");
+                Environment.Exit(0);
+                return true;
+            }
+            else if (lowerInput == "n" || lowerInput == "end" || lowerInput == "back")
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        static bool PromptToContinue()
+        {
+            Console.Write("\nDo you want to continue in this section? (y/n/exit) > ");
+            string response = Console.ReadLine()?.Trim().ToLower() ?? "";
+
+            if (response == "exit")
+            {
+                Console.WriteLine("Exiting program. Goodbye!");
+                Environment.Exit(0);
+                return false;
+            }
+
+            // Simple check for "y" to continue
+            return response == "y";
+        }
+
+        static void RunAnimalsDemo()
+        {
+            // Only clear once at the beginning of the demo
+            Console.Clear();
+            Console.WriteLine("=== Animals Program ===");
+
+            bool stayInSection = true;
+            while (stayInSection)
+            {
+                // Ask for dog name
+                Console.Write("Enter a name for a dog: ");
+                string dogName = Console.ReadLine();
+                if (CheckForNavigation(dogName)) return;
+
+                // Ask for cat name
+                Console.Write("Enter a name for a cat: ");
+                string catName = Console.ReadLine();
+                if (CheckForNavigation(catName)) return;
+
+                try
+                {
+                    // Create animals directly instead of using an array for small collections
+                    Dog dog = new Dog(dogName);
+                    Cat cat = new Cat(catName);
+
+                    Console.WriteLine("\nAnimals making sounds:");
+                    dog.MakeSound();
+                    cat.MakeSound();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+
+                // Check if user wants to continue in this section
+                stayInSection = PromptToContinue();
             }
         }
 
-        static void AbstractClassDemo()
+        static void RunShapesDemo()
         {
             Console.Clear();
-            Console.WriteLine("=== Abstract Class Demo ===");
-            Console.WriteLine("This demonstrates abstraction with Shape as abstract class and Circle/Rectangle as concrete implementations.\n");
+            Console.WriteLine("=== Shapes Program ===");
 
-            Console.Write("Enter radius for a circle: ");
-            if (!double.TryParse(Console.ReadLine(), out double radius))
+            bool stayInSection = true;
+            while (stayInSection)
             {
-                Console.WriteLine("Invalid input. Using default value of 5.");
-                radius = 5;
-            }
+                // Faster menu display
+                Console.WriteLine("Select shape:\n" +
+                                 "1 - Circle\n" +
+                                 "2 - Rectangle\n" +
+                                 "Type 'end' to go back or 'exit' to quit.");
+                Console.Write("> ");
 
-            Console.Write("Enter width for a rectangle: ");
-            if (!double.TryParse(Console.ReadLine(), out double width))
-            {
-                Console.WriteLine("Invalid input. Using default value of 4.");
-                width = 4;
-            }
+                string choice = Console.ReadLine()?.Trim().ToLower() ?? "";
+                if (CheckForNavigation(choice)) return;
 
-            Console.Write("Enter height for a rectangle: ");
-            if (!double.TryParse(Console.ReadLine(), out double height))
-            {
-                Console.WriteLine("Invalid input. Using default value of 6.");
-                height = 6;
-            }
+                switch (choice)
+                {
+                    case "1": // Circle
+                        Console.Write("Enter radius for a circle: ");
+                        string radiusInput = Console.ReadLine();
+                        if (CheckForNavigation(radiusInput)) return;
 
-            // Create instances
-            Circle circle = new Circle(radius);
-            Rectangle rectangle = new Rectangle(width, height);
+                        if (double.TryParse(radiusInput, out double radius) && radius > 0)
+                        {
+                            try
+                            {
+                                Circle circle = new Circle(radius);
+                                Console.WriteLine($"\nCircle with radius {radius}:");
+                                Console.WriteLine($"  Area: {circle.GetArea():F2}");
+                                Console.WriteLine($"  Perimeter: {circle.GetPerimeter():F2}");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Error: {ex.Message}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid radius. Please enter a positive number.");
+                        }
+                        break;
 
-            Console.WriteLine($"\nCircle with radius {radius}:");
-            Console.WriteLine($"Area: {circle.GetArea():F2}");
-            Console.WriteLine($"Perimeter: {circle.GetPerimeter():F2}");
+                    case "2": // Rectangle
+                        Console.Write("Enter width for a rectangle: ");
+                        string widthInput = Console.ReadLine();
+                        if (CheckForNavigation(widthInput)) return;
 
-            Console.WriteLine($"\nRectangle with width {width} and height {height}:");
-            Console.WriteLine($"Area: {rectangle.GetArea():F2}");
-            Console.WriteLine($"Perimeter: {rectangle.GetPerimeter():F2}");
+                        Console.Write("Enter height for a rectangle: ");
+                        string heightInput = Console.ReadLine();
+                        if (CheckForNavigation(heightInput)) return;
 
-            Console.WriteLine("\nDo you want to try another example? (Y/N)");
-            Console.Write("Press Y to continue with Abstract Class Demo or any other key to return to main menu: ");
-            string choice = Console.ReadLine();
+                        if (double.TryParse(widthInput, out double width) && width > 0 &&
+                            double.TryParse(heightInput, out double height) && height > 0)
+                        {
+                            try
+                            {
+                                Rectangle rectangle = new Rectangle(width, height);
+                                Console.WriteLine($"\nRectangle with width {width} and height {height}:");
+                                Console.WriteLine($"  Area: {rectangle.GetArea():F2}");
+                                Console.WriteLine($"  Perimeter: {rectangle.GetPerimeter():F2}");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Error: {ex.Message}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid dimensions. Please enter positive numbers.");
+                        }
+                        break;
 
-            if (choice?.ToUpper() == "Y")
-            {
-                AbstractClassDemo();
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
+                }
+
+                // Check if user wants to continue in this section
+                stayInSection = PromptToContinue();
             }
         }
 
-        static void InterfaceDemo()
+        static void RunMovableObjectsDemo()
         {
             Console.Clear();
-            Console.WriteLine("=== Interface Demo ===");
-            Console.WriteLine("This demonstrates interfaces with IMovable interface implemented by Car and Bicycle classes.\n");
+            Console.WriteLine("=== Movable Objects Program ===");
 
-            Console.Write("Enter a brand for a car: ");
-            string carBrand = Console.ReadLine();
-
-            Console.Write("Enter a type for a bicycle: ");
-            string bicycleType = Console.ReadLine();
-
-            // Create instances
-            Car car = new Car(carBrand);
-            Bicycle bicycle = new Bicycle(bicycleType);
-
-            Console.WriteLine("\nDemonstrating interface implementation with Move() method:");
-
-            Console.WriteLine("Car instance:");
-            car.Move();
-
-            Console.WriteLine("\nBicycle instance:");
-            bicycle.Move();
-
-            Console.WriteLine("\nDo you want to try another example? (Y/N)");
-            Console.Write("Press Y to continue with Interface Demo or any other key to return to main menu: ");
-            string choice = Console.ReadLine();
-
-            if (choice?.ToUpper() == "Y")
+            bool stayInSection = true;
+            while (stayInSection)
             {
-                InterfaceDemo();
+                // Faster menu display
+                Console.WriteLine("Select vehicle:\n" +
+                                 "1 - Car\n" +
+                                 "2 - Bicycle\n" +
+                                 "Type 'end' to go back or 'exit' to quit.");
+                Console.Write("> ");
+
+                string choice = Console.ReadLine()?.Trim().ToLower() ?? "";
+                if (CheckForNavigation(choice)) return;
+
+                switch (choice)
+                {
+                    case "1": // Car
+                        Console.Write("Enter a car brand: ");
+                        string carBrand = Console.ReadLine();
+                        if (CheckForNavigation(carBrand)) return;
+
+                        try
+                        {
+                            Car car = new Car(carBrand);
+                            car.Move();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error: {ex.Message}");
+                        }
+                        break;
+
+                    case "2": // Bicycle
+                        Console.Write("Enter a bicycle type: ");
+                        string bicycleType = Console.ReadLine();
+                        if (CheckForNavigation(bicycleType)) return;
+
+                        try
+                        {
+                            Bicycle bicycle = new Bicycle(bicycleType);
+                            bicycle.Move();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error: {ex.Message}");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
+                }
+
+                // Check if user wants to continue in this section
+                stayInSection = PromptToContinue();
             }
         }
     }

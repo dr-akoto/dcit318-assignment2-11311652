@@ -1,0 +1,15 @@
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\bin\Release\net9.0\InheritanceDemo.exe
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\bin\Release\net9.0\InheritanceDemo.deps.json
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\bin\Release\net9.0\InheritanceDemo.runtimeconfig.json
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\bin\Release\net9.0\InheritanceDemo.dll
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\bin\Release\net9.0\InheritanceDemo.pdb
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\InheritanceDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\InheritanceDemo.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\InheritanceDemo.AssemblyInfo.cs
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\InheritanceDemo.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\InheritanceDemo.sourcelink.json
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\InheritanceDemo.dll
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\refint\InheritanceDemo.dll
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\InheritanceDemo.pdb
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\InheritanceDemo.genruntimeconfig.cache
+C:\Users\Admin\Desktop\dcit318-assignment2-\InheritanceDemo\obj\Release\net9.0\ref\InheritanceDemo.dll
