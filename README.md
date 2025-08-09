@@ -72,20 +72,6 @@ InheritanceDemo/
    ```
    dotnet build
    ```
-# DCIT318 Assignment 2: OOP Concepts Demo
-
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Setup and Installation](#setup-and-installation)
-- [Usage](#usage)
-- [Code Organization](#code-organization)
-- [OOP Concepts Demonstrated](#oop-concepts-demonstrated)
-- [Performance Optimizations](#performance-optimizations)
-- [Development](#development)
-- [Troubleshooting](#troubleshooting)
-- [Contributors](#contributors)
 
 ## Overview
 This project demonstrates fundamental Object-Oriented Programming (OOP) concepts through a menu-driven C# console application. It includes examples of inheritance, abstraction, polymorphism, encapsulation, and interfaces, with performance optimizations for faster execution.
