@@ -265,9 +265,6 @@ The output will be in the `bin/Release/net6.0/publish` directory.
    dotnet restore
    ```
 
-## Contributors
-- [Your Name] - [Your Email]
-- University of Ghana, Department of Computer Science
 
 ---
 © 2025 DCIT318 Assignment 2 - All rights reserved
